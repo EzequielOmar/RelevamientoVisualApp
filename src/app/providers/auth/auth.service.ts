@@ -26,7 +26,7 @@ export class AuthService {
    *  auth/wrong-password
    * @param email string email del usuario
    * @param password string password del usuario  */
-  signIn = async (email: string, password: string) => {
+  signIn = async (email: string, password: string) =>
     await this.angularFireAuth
       .signInWithEmailAndPassword(Validator.email(email), password)
       .then((res) => res)
@@ -39,7 +39,6 @@ export class AuthService {
         }
         throw new Error('Datos incorrectos.');
       });
-  };
 
   /*
    * Recibe email y pass
@@ -83,7 +82,8 @@ export class AuthService {
 
   /*
    * Abre la ventana encargada de elegir la cuenta de google para loguearse.
-   * @returns retorna lo que devuelve la función this.signUpWithProvider(provider-> google)
+   * @returns retorna el evento (contiene el usuario)
+   * o throw error con mensaje listo para mostrar
    * res.credential.accessToken -> Google Acces Token
    * res.user -> datos del usuario logueado
    */
@@ -94,7 +94,11 @@ export class AuthService {
     return await this.signUpWithProvider(provider);
   };
 
-  private signUpWithProvider = async (provider: any) => {
-    await this.angularFireAuth.signInWithPopup(provider).then((res) => res);
-  };
+  private signUpWithProvider = async (provider: any) =>
+    await this.angularFireAuth
+      .signInWithPopup(provider)
+      .then((res) => res)
+      .catch(() => {
+        throw new Error('Operación cancelada.');
+      });
 }

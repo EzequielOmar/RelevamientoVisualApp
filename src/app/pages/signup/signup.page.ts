@@ -33,9 +33,7 @@ export class SignupPage {
       this.auth
         .signUp(form.form.value.email, form.form.value.password)
         .then((res) => {
-          //Guarda al usuario en la base de datos, y redirecciona
-          this.signup.createdAt = new Date().toJSON();
-          this.db.setWithId(databases.users, res.user.uid, this.signup);
+          this.saveNewUser(res.user.uid);
           this.router.navigate(['/']);
         })
         .catch((error) => (this.error = error))
@@ -45,7 +43,27 @@ export class SignupPage {
     }
   }
 
+  signUpWithGoogle() {
+    this.submitted = true;
+    this.auth
+      .signUpWithGoogle()
+      .then((res) => {
+        this.signup.email = res.user.email;
+        this.saveNewUser(res.user.uid);
+        this.router.navigate(['/']);
+      })
+      .catch((error) => (this.error = error))
+      .finally(() => {
+        this.spinner = false;
+      });
+  }
+
   onCancel() {
     this.router.navigateByUrl('/login');
+  }
+
+  private saveNewUser(uid: string) {
+    this.signup.createdAt = new Date().toJSON();
+    this.db.setWithId(databases.users, uid, this.signup);
   }
 }
