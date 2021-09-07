@@ -6,9 +6,11 @@
 
 <ion-content>
 
-  <div *ngIf="spinner">
-    spinnerr
-  </div>
+
+  <ion-col *ngIf="spinner">
+    <img src="assets/spinner.svg" alt="spinner">
+  </ion-col>
+
   <div *ngIf="error">
     {{error}}
   </div>

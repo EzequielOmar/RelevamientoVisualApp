@@ -1,0 +1,92 @@
+<svg id="spinner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="-135 -100 400 400" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+        style="background-color:transparent">
+        <style>
+          #spinner{
+            width:100%;
+            height:auto;
+          }
+          #spinner-g1_tr {
+            animation: spinner-g1_tr__tr 4000ms linear infinite normal backwards
+          }
+
+          @keyframes spinner-g1_tr__tr {
+            0% {
+              transform: translate(56.938298px, 95.261681px) rotate(0deg)
+            }
+
+            52% {
+              transform: translate(56.938298px, 95.261681px) rotate(360.041449deg)
+            }
+
+            100% {
+              transform: translate(56.938298px, 95.261681px) rotate(360.041449deg)
+            }
+          }
+
+          #spinner-mid_to {
+            animation: spinner-mid_to__to 4000ms linear infinite normal backwards
+          }
+
+          @keyframes spinner-mid_to__to {
+            0% {
+              transform: translate(43.583937px, 95.580795px)
+            }
+
+            15% {
+              transform: translate(60.121625px, 95.580795px)
+            }
+
+            49.5% {
+              transform: translate(53.106099px, 95.580795px)
+            }
+
+            100% {
+              transform: translate(43.583937px, 95.580795px)
+            }
+          }
+
+          #spinner-mid_ts {
+            animation: spinner-mid_ts__ts 4000ms linear infinite normal backwards
+          }
+
+          @keyframes spinner-mid_ts__ts {
+            0% {
+              transform: scale(1, 1.01399)
+            }
+
+            15% {
+              transform: scale(1, 1.01399)
+            }
+
+            49.5% {
+              transform: scale(0.719379, 0.350724)
+            }
+
+            100% {
+              transform: scale(1, 1.01399)
+            }
+          }
+        </style>
+        <g id="spinner-g1_tr" transform="translate(56.938298,95.261681) rotate(0)">
+          <g id="spinner-g1" transform="translate(-56.938297,-95.26168)">
+            <g id="spinner-g2" transform="matrix(2.209047 0 0 1 -22.468848 0.326292)">
+              <rect id="spinner-top" width="50" height="50" rx="0" ry="0"
+                transform="matrix(0.694496 0 0 0.446174 18.583933 43.031419)" fill="rgb(160,160,160)" stroke="none"
+                stroke-width="1" />
+              <rect id="spinner-bottom" width="50" height="50" rx="0" ry="0"
+                transform="matrix(0.694496 0 0 0.446174 18.583933 124.530663)" fill="rgb(160,160,160)" stroke="none"
+                stroke-width="1" />
+            </g>
+            <g id="spinner-mid_to" transform="translate(43.583937,95.580795)">
+              <g id="spinner-mid_ts" transform="scale(1,1.01399)">
+                <rect id="spinner-mid" width="50" height="50" rx="0" ry="0" transform="translate(-25.000004,-25)"
+                  fill="rgb(160,160,160)" stroke="none" stroke-width="1" />
+              </g>
+            </g>
+            <rect id="spinner-mid-column" width="50" height="50" rx="0" ry="0"
+              transform="matrix(0.331217 0 0 1.01418 35.121621 70.226295)" fill="rgb(160,160,160)" stroke="none"
+              stroke-width="1" />
+          </g>
+        </g>
+      </svg>
