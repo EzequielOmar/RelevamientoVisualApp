@@ -34,6 +34,19 @@ export class LoginPage {
     }
   }
 
+  signInWithGoogle() {
+    this.submitted = true;
+    this.auth
+      .signUpWithGoogle()
+      .then(() => {
+        this.router.navigate(['/']);
+      })
+      .catch((error) => (this.error = error))
+      .finally(() => {
+        this.spinner = false;
+      });
+  }
+
   onSignup() {
     this.router.navigateByUrl('/signup');
   }
