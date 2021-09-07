@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="spinner">
+    spinnerr
+  </div>
+  <div *ngIf="error">
+    {{error}}
+  </div>
+
+  <form *ngIf="!spinner" #signupForm="ngForm" novalidate>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked" color="primary">Username</ion-label>
+        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="signup.email" name="email" type="text" #mail="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="mail.valid || submitted === false" class="ion-padding-start">
+          Por favor, ingrese su Correo Electrónico.
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="pass" name="password" type="password" #password="ngModel" required minlength=6>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="!password.errors?.minlength  || submitted === false" class="ion-padding-start">
+          La contraseña ingresada es muy corta.
+        </p>
+      </ion-text>
+      <ion-text color="danger">
+        <p [hidden]="!password.errors?.required || submitted === false" class="ion-padding-start">
+          Por favor, ingrese una contraseña.
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Repeat Password</ion-label>
+        <ion-input [(ngModel)]="passCheck" name="passRepeat" type="password" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="passCheck === pass || password.errors?.required" class="ion-padding-start">
+          Las contraseñas no coinciden.
+        </p>
+      </ion-text>
+
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
+      <ion-button (click)="onCancel()" color="light" type="submit" expand="block">Cancel</ion-button>
+    </div>
+  </form>
+</ion-content>

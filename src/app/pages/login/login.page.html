@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="spinner">
+    spinnerr
+  </div>
+  <div *ngIf="error">
+    {{error}}
+  </div>
+
+  <form *ngIf="!spinner" #loginForm="ngForm" novalidate>
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="login.email" name="email" type="text" #mail="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="mail.valid || submitted === false" class="ion-padding-start">
+          Por favor, ingrese su Correo Electrónico.
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="pass" name="password" type="password" #password="ngModel" minlength=6 required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="!password.errors?.minlength || submitted === false" class="ion-padding-start">
+          La contraseña ingresada es muy corta.
+        </p>
+      </ion-text>
+      <ion-text color="danger">
+        <p [hidden]="!password.errors?.required || submitted === false" class="ion-padding-start">
+          Por favor, ingrese una contraseña.
+        </p>
+      </ion-text>
+
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-text color="danger">
+        <a (click)="admin()"> Admin </a>
+      </ion-text>
+      <ion-text color="danger">
+        <a (click)="invitado()"> Invitado </a>
+      </ion-text>
+      <ion-text color="danger">
+        <a (click)="usuario()"> Usuario </a>
+      </ion-text>
+      <ion-text color="danger">
+        <a (click)="anonimo()"> Anónimo </a>
+      </ion-text>
+      <ion-text color="danger">
+        <a (click)="tester()"> Tester </a>
+      </ion-text>
+    </ion-row>
+
+    <ion-row>
+      <ion-text color="danger">
+        <a (click)="cancel()"> Cancelar </a>
+      </ion-text>
+    </ion-row>
+
+  </form>
+</ion-content>
