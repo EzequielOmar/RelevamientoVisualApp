@@ -3,7 +3,6 @@ ion-content {
     ion-list {
       background: none;
     }
-
     ion-row {
       ion-badge {
         font-size: larger;
@@ -25,4 +24,5 @@ ion-content {
     padding: 1rem;
   }
   text-align: center;
+  --ion-background-color: rgb(255, 199, 94);
 }
