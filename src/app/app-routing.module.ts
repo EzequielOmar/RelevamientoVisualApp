@@ -29,10 +29,6 @@ const routes: Routes = [
       import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
   },
   {
-    path: 'splash',
-    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

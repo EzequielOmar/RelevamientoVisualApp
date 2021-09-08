@@ -1,70 +1,79 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content >
 
-<ion-content>
 
-  <div *ngIf="spinner">
-    spinnerr
-  </div>
-  <div *ngIf="error">
-    {{error}}
-  </div>
+  <ion-col *ngIf="spinner">
+    <img src="assets/spinner.svg" alt="spinner">
+  </ion-col>
 
-  <form *ngIf="!spinner" #signupForm="ngForm" novalidate>
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel">
-        </ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked" color="primary">Email</ion-label>
-        <ion-input [(ngModel)]="signup.email" name="email" type="text" #mail="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="mail.valid || submitted === false" class="ion-padding-start">
-          Por favor, ingrese su Correo Electrónico.
-        </p>
-      </ion-text>
-
-      <ion-item>
-        <ion-label position="stacked" color="primary">Password</ion-label>
-        <ion-input [(ngModel)]="pass" name="password" type="password" #password="ngModel" required minlength=6>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="!password.errors?.minlength  || submitted === false" class="ion-padding-start">
-          La contraseña ingresada es muy corta.
-        </p>
-      </ion-text>
-      <ion-text color="danger">
-        <p [hidden]="!password.errors?.required || submitted === false" class="ion-padding-start">
-          Por favor, ingrese una contraseña.
-        </p>
-      </ion-text>
-
-      <ion-item>
-        <ion-label position="stacked" color="primary">Repeat Password</ion-label>
-        <ion-input [(ngModel)]="passCheck" name="passRepeat" type="password" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="passCheck === pass || password.errors?.required" class="ion-padding-start">
-          Las contraseñas no coinciden.
-        </p>
-      </ion-text>
-
-    </ion-list>
-
-    <div class="ion-padding">
-      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
-      <ion-button (click)="onCancel()" color="light" type="submit" expand="block">Cancel</ion-button>
-      <ion-button (click)="signUpWithGoogle()" color="light" type="submit" expand="block">Entrar con Google</ion-button>
+  <ion-badge color="light">
+    <div *ngIf="error">
+      {{error}}
     </div>
-  </form>
+
+    <form *ngIf="!spinner" #signupForm="ngForm" novalidate>
+      <ion-list>
+        <ion-item color="none">
+          <ion-label position="floating" color="dark">Nombre de usuario</ion-label>
+          <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel">
+          </ion-input>
+        </ion-item>
+
+        <ion-item color="none">
+          <ion-label position="floating" color="dark">Correo Electrónico</ion-label>
+          <ion-input [(ngModel)]="signup.email" name="email" type="text" #mail="ngModel" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="mail.valid || submitted === false" class="ion-padding-start">
+            Por favor, ingrese su Correo Electrónico.
+          </p>
+        </ion-text>
+
+        <ion-item color="none">
+          <ion-label position="floating" color="dark">Constraseña</ion-label>
+          <ion-input [(ngModel)]="pass" name="password" type="password" #password="ngModel" required minlength=6>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="!password.errors?.minlength  || submitted === false" class="ion-padding-start">
+            La contraseña ingresada es muy corta.
+          </p>
+        </ion-text>
+        <ion-text color="danger">
+          <p [hidden]="!password.errors?.required || submitted === false" class="ion-padding-start">
+            Por favor, ingrese una contraseña.
+          </p>
+        </ion-text>
+
+        <ion-item color="none">
+          <ion-label position="floating" color="dark">Repetir Constraseña</ion-label>
+          <ion-input [(ngModel)]="passCheck" name="passRepeat" type="password" required>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <p [hidden]="passCheck === pass || password.errors?.required" class="ion-padding-start">
+            Las contraseñas no coinciden.
+          </p>
+        </ion-text>
+
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="onSignup(signupForm)" color="warning" type="submit" expand="block">Registrarse
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="onCancel()" color="dark" type="submit" expand="block">Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-col>
+        <ion-button (click)="signUpWithGoogle()" color="primary" type="submit" expand="block">
+          <ion-icon name="logo-google"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </form>
+
+  </ion-badge>
+
 </ion-content>

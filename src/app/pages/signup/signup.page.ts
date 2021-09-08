@@ -9,7 +9,7 @@ import { databases } from 'src/app/providers/database/const';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  styleUrls: ['../login/login.page.scss'],
 })
 export class SignupPage {
   signup = userDb;
